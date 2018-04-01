@@ -9,8 +9,10 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
-import {environment} from '../environments/environment';
+import {environment} from '@env';
 
+import {BaseHttpService} from '@core/service/base.http.service';
+import {SharedModule} from '@shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -23,8 +25,11 @@ import {environment} from '../environments/environment';
     AngularFireDatabaseModule, // add realtime DB module
     AngularFirestoreModule, // add cloudstore DB module
     AngularFireAuthModule, // add auth module
+    SharedModule
   ],
-  providers: [],
+  providers: [
+    BaseHttpService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
